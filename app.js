@@ -3,8 +3,16 @@ let lista_amigos = document.getElementById('listaAmigos');
 let resultado = document.getElementById('resultado');
 
 let agregarAmigo = () => {
-    amigos.push(document.getElementById('amigo').value);
-    lista_amigos.innerHTML = amigos.join('<br>');
+    let amigo = document.getElementById('amigo').value;
+    let regex = /^[A-Za-záéíóúÁÉÍÓÚüÜñÑ\s]+$/;
+    if (regex.test(amigo)) {
+        amigos.push(amigo);
+        lista_amigos.innerHTML = amigos.join('<br>');
+        document.getElementById('amigo').value = '';
+    } else {
+        alert('Por favor, ingresa un nombre válido.');
+    }
+
 }
 
 let sortearAmigo = () => {
